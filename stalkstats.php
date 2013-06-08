@@ -87,6 +87,7 @@ $d_facebook = '(+' . ($facebook - $row['facebook']) . ')';
 $d_twitter = '(+' . ($twitter - $row['twitter']) . ')';
 $d_google = '(+' . ($google - $row['googleplus']) . ')';
 $d_linkedin = '(+' . ($linkedin - $row['linkedin']) . ')';
+$d_total = '(+' . ($total - $row['total']) . ')';
 
 
 echo "NOW:  " . date('r') . "\n";
