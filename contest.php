@@ -9,8 +9,6 @@ echo "STARTING:  " . date('r') . "\n";
 echo "Getting all the votes\n";
 foreach ($links as $line => $url) {
     $url = trim($url);
-    /*
-     */
     $facebook = get_likes($url);
     $twitter = get_tweets($url);
     $google = get_plusones($url);
@@ -23,10 +21,17 @@ foreach ($links as $line => $url) {
 
 arsort($videos);
 
+$print = "REPORT FOR:  " . date('r') . "\n";
+$print .= "-------\n";
 foreach ($videos as $video => $votes) {
     $name = str_pad(substr($video, 0, 20), 20, " ");
-    echo "${name}\t\t${votes} votes\n";
+    $print .= "${name}\t\t${votes} votes\n";
 }
-echo "-------\n";
-echo "REPORT DONE:  " . date('r') . "\n";
+$print .= "-------\n";
+$print .= "REPORT DONE:  " . date('r') . "\n";
+
+echo $print;
+
+$reportname = "report-".date('Ymd')."-".date('His');
+file_put_contents($reportname, $print);
 ?>
